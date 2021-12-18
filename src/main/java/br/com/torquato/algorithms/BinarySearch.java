@@ -18,13 +18,12 @@ public class BinarySearch<E extends Comparable<E>> {
         this.sortedElements = copyOfElements;
     }
 
-    public E getElement(E elementToSearch) {
-        return Optional.ofNullable(getIndexOfElement(elementToSearch))
-                .map(this.sortedElements::get)
-                .orElse(null);
+    public Optional<E> getElement(E elementToSearch) {
+        return getIndexOfElement(elementToSearch)
+                .map(this.sortedElements::get);
     }
 
-    public Integer getIndexOfElement(E elementToSearch) {
+    public Optional<Integer> getIndexOfElement(E elementToSearch) {
         int iterationsCount = 0;
         Integer foundIndex = null;
 
@@ -47,7 +46,7 @@ public class BinarySearch<E extends Comparable<E>> {
         }
         log.info("Iterations count: {}", iterationsCount);
         log.info("Element {}", foundIndex != null ? "found." : "not found.");
-        return foundIndex;
+        return Optional.ofNullable(foundIndex);
     }
 
 }

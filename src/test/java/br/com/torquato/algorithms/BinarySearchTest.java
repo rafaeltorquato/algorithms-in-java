@@ -5,10 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BinarySearchTest {
@@ -24,8 +23,8 @@ class BinarySearchTest {
     @Test
     @DisplayName("Should return null index when searched element not found")
     public void shouldReturnNullIndexWhenSearchedElementNotFound() {
-        Integer elementFound = this.binarySearch.getIndexOfElement(10);
-        assertNull(elementFound);
+        Optional<Integer> optionalIndexOfElement = binarySearch.getIndexOfElement(10);
+        assertTrue(optionalIndexOfElement.isEmpty());
     }
 
     @Test
@@ -34,16 +33,16 @@ class BinarySearchTest {
         List<Integer> elementsThatExists = List.of(1, 2, 3, 4, 5, 6, 7, 8);
 
         for (Integer elementToSearch : elementsThatExists) {
-            Integer indexOfElement = binarySearch.getIndexOfElement(elementToSearch);
-            assertTrue(indexOfElement > -1);
+            Optional<Integer> optionalIndexOfElement = binarySearch.getIndexOfElement(elementToSearch);
+            assertTrue(optionalIndexOfElement.isPresent());
         }
     }
 
     @Test
     @DisplayName("Should return null when searched element not found")
     public void shouldReturnNullWhenSearchedElementNotFound() {
-        Integer elementFound = this.binarySearch.getElement(10);
-        assertNull(elementFound);
+        Optional<Integer> optionalElement = this.binarySearch.getElement(10);
+        assertTrue(optionalElement.isEmpty());
     }
 
     @Test
@@ -52,10 +51,10 @@ class BinarySearchTest {
         List<Integer> elementsThatExists = List.of(1, 2, 3, 4, 5, 6, 7, 8);
 
         for (Integer elementToSearch : elementsThatExists) {
-            Integer elementFound = binarySearch.getElement(elementToSearch);
+            Optional<Integer> optionalElement = binarySearch.getElement(elementToSearch);
 
-            assertNotNull(elementFound);
-            assertEquals(elementToSearch, elementFound);
+            assertTrue(optionalElement.isPresent());
+            assertEquals(elementToSearch, optionalElement.get());
         }
     }
 
