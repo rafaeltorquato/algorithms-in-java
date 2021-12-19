@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * Complexity O(log n)
+ */
 @Slf4j
 public class BinarySearch<E extends Comparable<E>> {
 
