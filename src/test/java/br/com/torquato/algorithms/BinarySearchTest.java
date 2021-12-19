@@ -16,8 +16,7 @@ class BinarySearchTest {
 
     @BeforeEach
     public void setup() {
-        List<Integer> sortedElements = List.of(1, 2, 3, 4, 5, 6, 7, 8);
-        this.binarySearch = new BinarySearch<>(sortedElements);
+        this.binarySearch = new BinarySearch<>(1, 2, 3, 4, 5, 6, 7, 8);
     }
 
     @Test
