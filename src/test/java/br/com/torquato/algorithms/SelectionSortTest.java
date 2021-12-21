@@ -17,10 +17,10 @@ class SelectionSortTest {
 
     @Test
     @DisplayName("Should sort an unsorted array")
-    public void shouldSortAnUnsortedArray() {
+    void shouldSortAnUnsortedArray() {
         Integer[] array = new Integer[]{10, 9, 8, 5, 7, 4, 6, 3, 2, 1};
-        Integer[] sortedArray = this.selectionSort.sort(array);
-        assertArrayEquals(sortedArray, new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        Integer[] sortedArray = this.selectionSort.sortedCopy(array);
+        assertArrayEquals(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, sortedArray);
     }
 
 }
