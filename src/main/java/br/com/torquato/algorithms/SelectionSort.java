@@ -13,9 +13,9 @@ public class SelectionSort<E extends Comparable<E>> {
     public E[] sort(E[] unsortedArray) {
         E[] sortedArray = Arrays.copyOf(unsortedArray, unsortedArray.length);
         Arrays.fill(sortedArray, null);
-        for (int i = 0; i < unsortedArray.length; i++) {
+        for (int index = 0; index < unsortedArray.length; index++) {
             int smallestIndex = findSmallestIndex(unsortedArray, sortedArray);
-            sortedArray[i] = unsortedArray[smallestIndex];
+            sortedArray[index] = unsortedArray[smallestIndex];
         }
 
         return sortedArray;

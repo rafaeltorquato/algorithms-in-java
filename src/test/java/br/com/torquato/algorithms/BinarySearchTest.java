@@ -21,14 +21,14 @@ class BinarySearchTest {
 
     @Test
     @DisplayName("Should return null index when searched element not found")
-    public void shouldReturnNullIndexWhenSearchedElementNotFound() {
+    void shouldReturnNullIndexWhenSearchedElementNotFound() {
         Optional<Integer> optionalIndexOfElement = binarySearch.getIndexOfElement(10);
         assertTrue(optionalIndexOfElement.isEmpty());
     }
 
     @Test
     @DisplayName("Should return the index of the element when that element exists")
-    public void shouldReturnTheIndexOfTheElementWhenThatElementExists() {
+    void shouldReturnTheIndexOfTheElementWhenThatElementExists() {
         List<Integer> elementsThatExists = List.of(1, 2, 3, 4, 5, 6, 7, 8);
 
         for (Integer elementToSearch : elementsThatExists) {
@@ -39,14 +39,14 @@ class BinarySearchTest {
 
     @Test
     @DisplayName("Should return null when searched element not found")
-    public void shouldReturnNullWhenSearchedElementNotFound() {
+    void shouldReturnNullWhenSearchedElementNotFound() {
         Optional<Integer> optionalElement = this.binarySearch.getElement(10);
         assertTrue(optionalElement.isEmpty());
     }
 
     @Test
     @DisplayName("Should return the element when that element exists")
-    public void shouldReturnTheElementWhenThatElementExists() {
+    void shouldReturnTheElementWhenThatElementExists() {
         List<Integer> elementsThatExists = List.of(1, 2, 3, 4, 5, 6, 7, 8);
 
         for (Integer elementToSearch : elementsThatExists) {
