@@ -29,7 +29,7 @@ public class SelectionSort<E extends Comparable<E>> {
         Class<? extends Comparable> smallestClass = smallest.getClass();
         E[] safeControlArray = Stream.of(controlArray)
                 .filter(Objects::nonNull)
-                .toArray(value -> (E[]) Array.newInstance(smallestClass, value));
+                .toArray(size -> (E[]) Array.newInstance(smallestClass, size));
 
         BinarySearch<E> eBinarySearch = new BinarySearch<>(safeControlArray);
         for (int index = 1; index < searchableArray.length; index++) {
