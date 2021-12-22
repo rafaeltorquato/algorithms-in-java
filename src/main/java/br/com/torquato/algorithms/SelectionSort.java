@@ -34,7 +34,7 @@ public class SelectionSort<E extends Comparable<E>> {
         BinarySearch<E> eBinarySearch = new BinarySearch<>(safeControlArray);
         for (int index = 1; index < searchableArray.length; index++) {
             E smallestCandidate = searchableArray[index];
-            boolean isSmallestCandidateAlreadyAdded = eBinarySearch.getElement(smallestCandidate).isPresent();
+            boolean isSmallestCandidateAlreadyAdded = eBinarySearch.getIndexOfElement(smallestCandidate).isPresent();
             boolean isSmallestCandidateSmallerThanSmallest = smallestCandidate.compareTo(smallest) < 0;
             if (!isSmallestCandidateAlreadyAdded && isSmallestCandidateSmallerThanSmallest) {
                 smallest = smallestCandidate;

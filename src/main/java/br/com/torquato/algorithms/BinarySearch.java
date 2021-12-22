@@ -2,29 +2,35 @@ package br.com.torquato.algorithms;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 /**
- * Complexity O(log n)
+ * A binary search algorithm abstraction.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary Search</a>
  */
 @Slf4j
 public class BinarySearch<E extends Comparable<E>> {
 
     private final E[] sortedElements;
 
+    /**
+     * Construct a new BinarySearch
+     *
+     * @param sortedElements Elements (sorted) that can be searched.
+     */
     @SafeVarargs
     public BinarySearch(E... sortedElements) {
         ensureIsSorted(sortedElements);
         this.sortedElements = sortedElements;
     }
 
-    public Optional<E> getElement(E elementToSearch) {
-        return getIndexOfElement(elementToSearch)
-                .map(index -> this.sortedElements[index]);
-    }
-
+    /**
+     * Get the index of an element.
+     *
+     * @param elementToSearch Element that you want to search
+     * @return An Optional with value if the element exists, otherwise an empty Optional.
+     */
     public Optional<Integer> getIndexOfElement(E elementToSearch) {
         int iterationsCount = 0;
         Integer foundIndex = null;
