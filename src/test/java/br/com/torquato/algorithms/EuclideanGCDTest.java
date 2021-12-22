@@ -11,7 +11,7 @@ class EuclideanGCDTest {
     @DisplayName("Should calculate that the GCD between 270 and 192 is 6")
     void shouldCalculateThatTheGcdBetween270and192is6() {
         EuclideanGCD euclideanGCD = new EuclideanGCD(270, 192);
-        int gcd = euclideanGCD.get();
+        int gcd = euclideanGCD.calculate();
 
         assertEquals(6, gcd);
     }
@@ -20,7 +20,7 @@ class EuclideanGCDTest {
     @DisplayName("Should calculate that the GCD between 1680 and 640 is 80")
     void shouldCalculateThatTheGcdBetween1680and192is80() {
         EuclideanGCD euclideanGCD = new EuclideanGCD(1680, 640);
-        int gcd = euclideanGCD.get();
+        int gcd = euclideanGCD.calculate();
 
         assertEquals(80, gcd);
     }

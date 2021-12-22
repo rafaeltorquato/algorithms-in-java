@@ -60,8 +60,8 @@ public class BinarySearch<E extends Comparable<E>> {
                 highIndex = middleIndex - 1;
             }
         }
-        log.info("Element {}", foundIndex != null ? "found." : "not found.");
         log.info("{} iterations performed.", iterationsCount);
+        log.info("Element {}", foundIndex != null ? "found." : "not found.");
         return Optional.ofNullable(foundIndex);
     }
 
