@@ -1,5 +1,6 @@
 package br.com.torquato.algorithms;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BinarySearchTest {
@@ -16,6 +19,15 @@ class BinarySearchTest {
     @BeforeEach
     public void setup() {
         this.binarySearch = new BinarySearch<>(1, 2, 3, 4, 5, 6, 7, 8);
+    }
+
+    @Test
+    @DisplayName("Should fail when the array is unsorted")
+    void shouldFailWhenTheArrayIsUnsorted() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
+            new BinarySearch<>(3, 2, 1);
+        });
+        assertEquals("Elements aren't sorted.", ex.getMessage());
     }
 
     @Test
