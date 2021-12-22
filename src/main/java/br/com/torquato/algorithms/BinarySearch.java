@@ -2,15 +2,22 @@ package br.com.torquato.algorithms;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Map;
 import java.util.Optional;
 
 /**
- * A binary search algorithm abstraction.
+ * Algorithm abstraction to find an element in an array of sorted elements.
  *
  * @see <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary Search</a>
  */
 @Slf4j
 public class BinarySearch<E extends Comparable<E>> {
+
+    private static final Map<Integer, String> EXPLANATION_MAP = Map.of(
+            0, "equal to",
+            1, "greater than",
+            -1, "smaller than"
+    );
 
     private final E[] sortedElements;
 
@@ -34,15 +41,16 @@ public class BinarySearch<E extends Comparable<E>> {
     public Optional<Integer> getIndexOfElement(E elementToSearch) {
         int iterationsCount = 0;
         Integer foundIndex = null;
-
+        log.info("Finding element '{}' in an array of {} elements.", elementToSearch, this.sortedElements.length);
         int highIndex = this.sortedElements.length - 1;
         int lowIndex = 0;
         while (lowIndex <= highIndex) {
             iterationsCount++;
             int middleIndex = (highIndex + lowIndex) / 2;
-            E middleElement = this.sortedElements[middleIndex];
 
+            E middleElement = this.sortedElements[middleIndex];
             int i = elementToSearch.compareTo(middleElement);
+            log.info("Element '{}' is {} middle element '{}'.", elementToSearch, getExplanation(i), middleElement);
             if (i == 0) {
                 foundIndex = middleIndex;
                 break;
@@ -52,9 +60,13 @@ public class BinarySearch<E extends Comparable<E>> {
                 highIndex = middleIndex - 1;
             }
         }
-        log.info("Iterations count: {}", iterationsCount);
         log.info("Element {}", foundIndex != null ? "found." : "not found.");
+        log.info("{} iterations performed.", iterationsCount);
         return Optional.ofNullable(foundIndex);
+    }
+
+    private String getExplanation(int i) {
+        return EXPLANATION_MAP.get(i);
     }
 
     private void ensureIsSorted(E[] elements) {
@@ -64,14 +76,13 @@ public class BinarySearch<E extends Comparable<E>> {
     }
 
     private boolean isSorted(E[] elements) {
-        if (elements.length == 0 || elements.length == 1) {
-            return true;
-        }
-        for (int i = 0; i < elements.length - 1; i++) {
-            E currentElement = elements[i];
-            E nextElement = elements[i + 1];
-            if (currentElement.compareTo(nextElement) > 0) {
-                return false;
+        if (elements.length > 1) {
+            for (int i = 0; i < elements.length - 1; i++) {
+                E currentElement = elements[i];
+                E nextElement = elements[i + 1];
+                if (currentElement.compareTo(nextElement) > 0) {
+                    return false;
+                }
             }
         }
         return true;

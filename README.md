@@ -4,8 +4,16 @@ A set of algorithms implemented in java language.
 
 ### [Binary Search](./src/main/java/br/com/torquato/algorithms/BinarySearch.java)
 
-Complexity O(log n)
+* Algorithm abstraction to find an element in an array of sorted elements.
+* Complexity O(log n)
 
 ### [Selection Sort](./src/main/java/br/com/torquato/algorithms/SelectionSort.java)
 
-Complexity O(n²)
+* Algorithm abstraction to sort an array of elements.
+* Complexity O(n²)
+
+### [Euclidean Algorithm GCD](./src/main/java/br/com/torquato/algorithms/EuclideanGCD.java)
+
+* Algorithm abstraction to calculate the Greatest Common Divisor (GCD) of two integers A and B, the largest integer that
+  divides both A and B.
+* Complexity WIP

@@ -6,10 +6,18 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * Complexity O(n²)
+ * Algorithm abstraction to sort an array of elements.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a>
  */
 public class SelectionSort<E extends Comparable<E>> {
 
+    /**
+     * Makes a sorted copy of an array
+     *
+     * @param unsortedArray Unsorted array
+     * @return A sorted array copy
+     */
     public E[] sortedCopy(E[] unsortedArray) {
         E[] sortedArray = Arrays.copyOf(unsortedArray, unsortedArray.length);
         Arrays.fill(sortedArray, null);
