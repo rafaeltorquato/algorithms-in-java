@@ -14,6 +14,7 @@ public class SelectionSort<E extends Comparable<E>> {
 
     private final E[] unsortedArray;
 
+    @SafeVarargs
     public SelectionSort(E... elements) {
         this.unsortedArray = elements;
     }
