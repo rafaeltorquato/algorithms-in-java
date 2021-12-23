@@ -12,13 +12,18 @@ import java.util.stream.Stream;
  */
 public class SelectionSort<E extends Comparable<E>> {
 
+    private final E[] unsortedArray;
+
+    public SelectionSort(E... elements) {
+        this.unsortedArray = elements;
+    }
+
     /**
      * Makes a sorted copy of an array
      *
-     * @param unsortedArray Unsorted array
      * @return A sorted array copy
      */
-    public E[] sortedCopy(E[] unsortedArray) {
+    public E[] getSortedCopy() {
         E[] sortedArray = Arrays.copyOf(unsortedArray, unsortedArray.length);
         Arrays.fill(sortedArray, null);
         for (int index = 0; index < unsortedArray.length; index++) {
