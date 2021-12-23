@@ -38,7 +38,7 @@ public class QuickSort<E extends Comparable<E>> {
             return elements;
         }
         if (elements.size() == 2) {
-            return sortTwoItemsArray(elements);
+            return getSortedListOfTwoElements(elements);
         }
         int randomPivotIndex = (int) (System.currentTimeMillis() % elements.size());
         E pivotElement = elements.remove(randomPivotIndex);
@@ -49,14 +49,14 @@ public class QuickSort<E extends Comparable<E>> {
         List<E> elementsGreaterThenPivot = greaterSmallerPartition.get(true);
         List<E> elementsSmallerThanPivot = greaterSmallerPartition.get(false);
 
-        return new ArrayList<>(elements.size()) {{
-            addAll(quickSort(elementsSmallerThanPivot));
-            add(pivotElement);
-            addAll(quickSort(elementsGreaterThenPivot));
-        }};
+        ArrayList<E> sortedElements = new ArrayList<>(elements.size());
+        sortedElements.addAll(quickSort(elementsSmallerThanPivot));
+        sortedElements.add(pivotElement);
+        sortedElements.addAll(quickSort(elementsGreaterThenPivot));
+        return sortedElements;
     }
 
-    private static <E extends Comparable<E>> List<E> sortTwoItemsArray(List<E> elements) {
+    private static <E extends Comparable<E>> List<E> getSortedListOfTwoElements(List<E> elements) {
         E firstElement = elements.get(0);
         E secondElement = elements.get(1);
         boolean smallerThenOrEqual = firstElement.compareTo(secondElement) <= 0;
