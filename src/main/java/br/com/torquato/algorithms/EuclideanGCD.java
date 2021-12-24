@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * that divides both A and B.
  *
  * @see
- * <a href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm">Euclidean Algorithm</a>
+ * <a href="https://bit.ly/3sytZnM">Euclidean Algorithm</a>
  */
 @Slf4j
 public class EuclideanGCD {
