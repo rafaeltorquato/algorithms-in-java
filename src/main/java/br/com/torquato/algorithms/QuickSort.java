@@ -45,13 +45,13 @@ public class QuickSort<E extends Comparable<E>> {
         Map<Boolean, List<E>> greaterSmallerPartition = elements
                 .stream()
                 .collect(partitioningBy(element -> element.compareTo(pivotElement) >= 0));
-        List<E> elementsGreaterThenPivot = greaterSmallerPartition.get(true);
-        List<E> elementsSmallerThanPivot = greaterSmallerPartition.get(false);
+        List<E> greaterThenPivotElements = greaterSmallerPartition.get(true);
+        List<E> smallerThanPivotElements = greaterSmallerPartition.get(false);
 
         ArrayList<E> sortedElements = new ArrayList<>(elements.size());
-        sortedElements.addAll(quickSort(elementsSmallerThanPivot));
+        sortedElements.addAll(quickSort(smallerThanPivotElements));
         sortedElements.add(pivotElement);
-        sortedElements.addAll(quickSort(elementsGreaterThenPivot));
+        sortedElements.addAll(quickSort(greaterThenPivotElements));
         return sortedElements;
     }
 
