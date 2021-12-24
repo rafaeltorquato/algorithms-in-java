@@ -62,7 +62,7 @@ public class CircularTrackGasStations {
         ); //T
         Input case2 = new Input(
                 7,
-                List.of(1, 1, 2, 10, 1, 1, 1),
+                List.of(1, 1, 1, 10, 1, 1, 1),
                 List.of(2, 2, 2, 2, 2, 2, 2)
         ); //T
         //T = 2
