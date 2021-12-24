@@ -22,3 +22,8 @@ A set of algorithms implemented in java language.
 
 * Algorithm abstraction to sort an array of elements.
 * Complexity O(n log(n))
+
+
+### [Challenge Circular Track Gas Station](./src/main/java/br/com/torquato/algorithms/challenges/CircularTrackGasStations.java)
+![Challenge Circular Track Gas Station](./src/main/resources/CircularTrackGasStations.jpeg)
+* Complexity O(n)

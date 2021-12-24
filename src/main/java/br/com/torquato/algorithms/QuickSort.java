@@ -27,10 +27,9 @@ public class QuickSort<E extends Comparable<E>> {
      *
      * @return the sorted copy.
      */
-    @SuppressWarnings({"unchecked"})
     public E[] getSortedCopy() {
         return quickSort(new ArrayList<>(Arrays.asList(this.elements)))
-                .toArray(size -> (E[]) Array.newInstance(this.elements[0].getClass(), size));
+                .toArray(this::newArray);
     }
 
     private static <E extends Comparable<E>> List<E> quickSort(List<E> elements) {
@@ -61,6 +60,11 @@ public class QuickSort<E extends Comparable<E>> {
         E secondElement = elements.get(1);
         boolean smallerThenOrEqual = firstElement.compareTo(secondElement) <= 0;
         return smallerThenOrEqual ? elements : List.of(secondElement, firstElement);
+    }
+
+    @SuppressWarnings({"unchecked"})
+    private E[] newArray(Integer size) {
+        return (E[]) Array.newInstance(this.elements[0].getClass(), size);
     }
 
 }
