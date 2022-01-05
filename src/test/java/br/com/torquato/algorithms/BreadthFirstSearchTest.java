@@ -1,6 +1,7 @@
 package br.com.torquato.algorithms;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -33,7 +34,8 @@ class BreadthFirstSearchTest {
     }
 
     @Test
-    void shouldFoundLoganFromAna() {
+    @DisplayName("Should find Logan from Ana")
+    void shouldFindLoganFromAna() {
         var ana = new BreadthFirstSearch.Vertex("Ana");
         var logan = new BreadthFirstSearch.Vertex("Logan");
 
@@ -41,7 +43,8 @@ class BreadthFirstSearchTest {
     }
 
     @Test
-    void shouldNotFoundRafaelFromAna() {
+    @DisplayName("Should not find Rafael from Ana")
+    void shouldNotFindRafaelFromAna() {
         var ana = new BreadthFirstSearch.Vertex("Ana");
         var logan = new BreadthFirstSearch.Vertex("Rafael");
 
