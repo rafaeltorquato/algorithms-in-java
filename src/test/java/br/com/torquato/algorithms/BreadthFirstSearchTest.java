@@ -1,6 +1,5 @@
 package br.com.torquato.algorithms;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,11 +33,19 @@ class BreadthFirstSearchTest {
     }
 
     @Test
-    void shouldFindLoganFromAna() {
+    void shouldFoundLoganFromAna() {
         var ana = new BreadthFirstSearch.Vertex("Ana");
         var logan = new BreadthFirstSearch.Vertex("Logan");
 
-        assertTrue(this.breadthFirstSearch.search(ana, logan::equals));
+        assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isPresent());
+    }
+
+    @Test
+    void shouldNotFoundRafaelFromAna() {
+        var ana = new BreadthFirstSearch.Vertex("Ana");
+        var logan = new BreadthFirstSearch.Vertex("Rafael");
+
+        assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isEmpty());
     }
 
 }
