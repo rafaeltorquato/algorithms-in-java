@@ -16,6 +16,7 @@ import java.util.Set;
 /**
  * Algorithm abstraction to find the cheapest path from a start node to another node.
  * <br/> Isn't thread safe.
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's Search Algorithm</a>
  */
 @RequiredArgsConstructor
@@ -39,8 +40,9 @@ public class DijkstrasSearch<R, T extends GraphNode<R>> {
 
     /**
      * Search the cheapest path from start node to end node. Results on resulPath and resultPathCost attributes.
+     *
      * @param start Start node
-     * @param end End node
+     * @param end   End node
      */
     public void search(T start, T end) {
         if (this.resultPath != null) throw new IllegalStateException("Search already performed.");
@@ -52,10 +54,9 @@ public class DijkstrasSearch<R, T extends GraphNode<R>> {
 
         LinkedList<T> path = new LinkedList<>();
         T current = end;
-        while (current != null) {
+        do {
             path.add(current);
-            current = parents.get(current);
-        }
+        } while ((current = parents.get(current)) != null);
         Collections.reverse(path);
         this.resultPath = path;
         this.resultPathCost = this.travelCosts.get(end);
