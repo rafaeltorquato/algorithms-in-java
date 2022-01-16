@@ -1,15 +1,12 @@
 package br.com.torquato.algorithms;
 
+import br.com.torquato.algorithms.data.Graph;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.Deque;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -32,45 +29,26 @@ public class BreadthFirstSearch {
      * @param predicate Condition
      * @return An Optional wih the nearest vertex or an empty Optional.
      */
-    public Optional<Vertex> search(Vertex vertex, Predicate<Vertex> predicate) {
-        Deque<Vertex> deque = new LinkedList<>(graph.adjVertices.get(vertex));//fast add
-        Set<Vertex> searchedVertexes = new HashSet<>(); //fast search
-        Optional<Vertex> result = Optional.empty();
+    public Optional<Graph.Vertex> search(Graph.Vertex vertex, Predicate<Graph.Vertex> predicate) {
+        Deque<Graph.Vertex> deque = new LinkedList<>(graph.getAdjVertices().get(vertex));//fast add
+        Set<Graph.Vertex> searchedVertices = new HashSet<>(); //fast search
+        Optional<Graph.Vertex> result = Optional.empty();
         while (!deque.isEmpty()) {
-            Vertex next = deque.pop();
-            if (searchedVertexes.contains(next)) continue;
+            Graph.Vertex next = deque.pop();
+            if (searchedVertices.contains(next)) continue;
 
             log.info("Searching on {}.", next);
-            searchedVertexes.add(next);
+            searchedVertices.add(next);
             if (predicate.test(next)) {
                 log.info("Found!");
                 result = Optional.of(next);
                 break;
             } else {
-                Optional.ofNullable(graph.adjVertices.get(next))
+                Optional.ofNullable(graph.getAdjVertices().get(next))
                         .ifPresent(deque::addAll);
             }
         }
         return result;
-    }
-
-    public record Vertex(String label) implements Comparable<Vertex> {
-
-        @Override
-        public int compareTo(Vertex o) {
-            return label.compareTo(o.label);
-        }
-
-    }
-
-    public static class Graph {
-
-        private final Map<Vertex, List<Vertex>> adjVertices = new HashMap<>();
-
-        public void addVertex(Vertex vertex, List<Vertex> neighbors) {
-            adjVertices.putIfAbsent(vertex, neighbors);
-        }
-
     }
 
 }

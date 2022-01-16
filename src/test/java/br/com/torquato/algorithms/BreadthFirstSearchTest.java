@@ -1,5 +1,6 @@
 package br.com.torquato.algorithms;
 
+import br.com.torquato.algorithms.data.Graph;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,15 +15,15 @@ class BreadthFirstSearchTest {
 
     @BeforeEach
     void setup() {
-        var graph = new BreadthFirstSearch.Graph();
-        var julia = new BreadthFirstSearch.Vertex("Julia");
-        var ana = new BreadthFirstSearch.Vertex("Ana");
-        var mark = new BreadthFirstSearch.Vertex("Mark");
-        var carlos = new BreadthFirstSearch.Vertex("Carlos");
-        var john = new BreadthFirstSearch.Vertex("John");
-        var spencer = new BreadthFirstSearch.Vertex("Spencer");
-        var logan = new BreadthFirstSearch.Vertex("Logan");
-        var bruce = new BreadthFirstSearch.Vertex("Bruce");
+        var graph = new Graph();
+        var julia = new Graph.Vertex("Julia");
+        var ana = new Graph.Vertex("Ana");
+        var mark = new Graph.Vertex("Mark");
+        var carlos = new Graph.Vertex("Carlos");
+        var john = new Graph.Vertex("John");
+        var spencer = new Graph.Vertex("Spencer");
+        var logan = new Graph.Vertex("Logan");
+        var bruce = new Graph.Vertex("Bruce");
 
         graph.addVertex(julia, List.of(ana, mark));
         graph.addVertex(ana, List.of(julia, bruce));
@@ -36,8 +37,8 @@ class BreadthFirstSearchTest {
     @Test
     @DisplayName("Should find Logan from Ana")
     void shouldFindLoganFromAna() {
-        var ana = new BreadthFirstSearch.Vertex("Ana");
-        var logan = new BreadthFirstSearch.Vertex("Logan");
+        var ana = new Graph.Vertex("Ana");
+        var logan = new Graph.Vertex("Logan");
 
         assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isPresent());
     }
@@ -45,8 +46,8 @@ class BreadthFirstSearchTest {
     @Test
     @DisplayName("Should not find Rafael from Ana")
     void shouldNotFindRafaelFromAna() {
-        var ana = new BreadthFirstSearch.Vertex("Ana");
-        var logan = new BreadthFirstSearch.Vertex("Rafael");
+        var ana = new Graph.Vertex("Ana");
+        var logan = new Graph.Vertex("Rafael");
 
         assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isEmpty());
     }
