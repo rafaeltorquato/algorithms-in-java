@@ -6,8 +6,7 @@ import lombok.extern.slf4j.Slf4j;
  * The Euclidean Algorithm for finding the Greatest Common Divisor (GCD) of two integers A and B, the largest integer
  * that divides both A and B.
  *
- * @see
- * <a href="https://bit.ly/3sytZnM">Euclidean Algorithm</a>
+ * @see <a href="https://bit.ly/3sytZnM">Euclidean Algorithm</a>
  */
 @Slf4j
 public class EuclideanGCD {

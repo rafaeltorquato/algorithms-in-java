@@ -1,6 +1,7 @@
 package br.com.torquato.algorithms;
 
 import br.com.torquato.algorithms.data.Graph;
+import br.com.torquato.algorithms.data.GraphNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,23 +19,23 @@ import java.util.function.Predicate;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class BreadthFirstSearch<T extends Comparable<T>> {
+public class BreadthFirstSearch<R, T extends GraphNode<R>> {
 
-    private final Graph<T> graph;
+    private final Graph<R, T> graph;
 
     /**
      * Search the nearest node that satisfies a condition
      *
-     * @param node    Start the search from this node
+     * @param node      Start the search from this node
      * @param predicate Condition
      * @return An Optional wih the nearest node or an empty Optional.
      */
-    public Optional<Graph.Node<T>> search(Graph.Node<T> node, Predicate<Graph.Node<T>> predicate) {
-        Deque<Graph.Node<T>> deque = new LinkedList<>(graph.getEdges().get(node));//fast add
-        Set<Graph.Node<T>> searchedNodes = new HashSet<>(); //fast search
-        Optional<Graph.Node<T>> result = Optional.empty();
+    public Optional<T> search(T node, Predicate<T> predicate) {
+        Deque<T> deque = new LinkedList<>(graph.getEdges().get(node));//fast add
+        Set<T> searchedNodes = new HashSet<>(); //fast search
+        Optional<T> result = Optional.empty();
         while (!deque.isEmpty()) {
-            Graph.Node<T> next = deque.pop();
+            T next = deque.pop();
             if (searchedNodes.contains(next)) continue;
 
             log.info("Searching on {}.", next);
