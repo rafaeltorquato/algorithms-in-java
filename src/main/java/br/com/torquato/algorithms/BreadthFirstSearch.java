@@ -19,14 +19,14 @@ import java.util.function.Predicate;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class BreadthFirstSearch<R,T extends GraphNode<R>> {
+public class BreadthFirstSearch<R, T extends GraphNode<R>> {
 
-    private final Graph<R,T> graph;
+    private final Graph<R, T> graph;
 
     /**
      * Search the nearest node that satisfies a condition
      *
-     * @param node    Start the search from this node
+     * @param node      Start the search from this node
      * @param predicate Condition
      * @return An Optional wih the nearest node or an empty Optional.
      */

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
-public class Graph<R,T extends GraphNode<R>> {
+public class Graph<R, T extends GraphNode<R>> {
 
     private final Map<T, List<T>> edges = new HashMap<>();
 
