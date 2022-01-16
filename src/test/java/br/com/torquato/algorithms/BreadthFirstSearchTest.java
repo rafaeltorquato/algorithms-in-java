@@ -25,11 +25,11 @@ class BreadthFirstSearchTest {
         var logan = new Graph.Node<>("Logan");
         var bruce = new Graph.Node<>("Bruce");
 
-        graph.addNode(julia, List.of(ana, mark));
-        graph.addNode(ana, List.of(julia, bruce));
-        graph.addNode(bruce, List.of(spencer, john, carlos));
-        graph.addNode(carlos, List.of(john, julia, mark, ana));
-        graph.addNode(spencer, List.of(logan));
+        graph.addNode(julia, ana, mark);
+        graph.addNode(ana, julia, bruce);
+        graph.addNode(bruce, spencer, john, carlos);
+        graph.addNode(carlos, john, julia, mark, ana);
+        graph.addNode(spencer, logan);
 
         this.breadthFirstSearch = new BreadthFirstSearch<>(graph);
     }
