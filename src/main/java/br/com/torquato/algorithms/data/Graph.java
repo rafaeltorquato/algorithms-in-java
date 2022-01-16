@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
-public class Graph {
+public class Graph<T extends Comparable<T>> {
 
-    private final Map<Vertex, List<Vertex>> adjVertices = new HashMap<>();
+    private final Map<Node<T>, List<Node<T>>> edges = new HashMap<>();
 
-    public void addVertex(Vertex vertex, List<Vertex> neighbors) {
-        adjVertices.putIfAbsent(vertex, neighbors);
+    public void addNode(Node<T> vertex, List<Node<T>> neighbors) {
+        edges.putIfAbsent(vertex, neighbors);
     }
 
-    public record Vertex(String label) implements Comparable<Vertex> {
+    public record Node<T extends Comparable<T>>(T label) implements Comparable<Node<T>> {
 
         @Override
-        public int compareTo(Vertex o) {
+        public int compareTo(Node<T> o) {
             return label.compareTo(o.label);
         }
 

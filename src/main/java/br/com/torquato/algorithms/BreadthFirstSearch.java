@@ -12,39 +12,39 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
- * The Breath First Search Algorithm to find the nearest vertex that satisfies a condition.
+ * The Breath First Search Algorithm to find the nearest node that satisfies a condition.
  *
  * @see <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breath First Search Algorithm</a>
  */
 @Slf4j
 @RequiredArgsConstructor
-public class BreadthFirstSearch {
+public class BreadthFirstSearch<T extends Comparable<T>> {
 
-    private final Graph graph;
+    private final Graph<T> graph;
 
     /**
-     * Search the nearest vertex that satisfies a condition
+     * Search the nearest node that satisfies a condition
      *
-     * @param vertex    Start the search from this vertex
+     * @param node    Start the search from this node
      * @param predicate Condition
-     * @return An Optional wih the nearest vertex or an empty Optional.
+     * @return An Optional wih the nearest node or an empty Optional.
      */
-    public Optional<Graph.Vertex> search(Graph.Vertex vertex, Predicate<Graph.Vertex> predicate) {
-        Deque<Graph.Vertex> deque = new LinkedList<>(graph.getAdjVertices().get(vertex));//fast add
-        Set<Graph.Vertex> searchedVertices = new HashSet<>(); //fast search
-        Optional<Graph.Vertex> result = Optional.empty();
+    public Optional<Graph.Node<T>> search(Graph.Node<T> node, Predicate<Graph.Node<T>> predicate) {
+        Deque<Graph.Node<T>> deque = new LinkedList<>(graph.getEdges().get(node));//fast add
+        Set<Graph.Node<T>> searchedNodes = new HashSet<>(); //fast search
+        Optional<Graph.Node<T>> result = Optional.empty();
         while (!deque.isEmpty()) {
-            Graph.Vertex next = deque.pop();
-            if (searchedVertices.contains(next)) continue;
+            Graph.Node<T> next = deque.pop();
+            if (searchedNodes.contains(next)) continue;
 
             log.info("Searching on {}.", next);
-            searchedVertices.add(next);
+            searchedNodes.add(next);
             if (predicate.test(next)) {
                 log.info("Found!");
                 result = Optional.of(next);
                 break;
             } else {
-                Optional.ofNullable(graph.getAdjVertices().get(next))
+                Optional.ofNullable(graph.getEdges().get(next))
                         .ifPresent(deque::addAll);
             }
         }

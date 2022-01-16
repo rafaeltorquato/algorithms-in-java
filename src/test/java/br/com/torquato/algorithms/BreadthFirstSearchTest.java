@@ -11,34 +11,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BreadthFirstSearchTest {
 
-    private BreadthFirstSearch breadthFirstSearch;
+    private BreadthFirstSearch<String> breadthFirstSearch;
 
     @BeforeEach
     void setup() {
-        var graph = new Graph();
-        var julia = new Graph.Vertex("Julia");
-        var ana = new Graph.Vertex("Ana");
-        var mark = new Graph.Vertex("Mark");
-        var carlos = new Graph.Vertex("Carlos");
-        var john = new Graph.Vertex("John");
-        var spencer = new Graph.Vertex("Spencer");
-        var logan = new Graph.Vertex("Logan");
-        var bruce = new Graph.Vertex("Bruce");
+        var graph = new Graph<String>();
+        var julia = new Graph.Node<>("Julia");
+        var ana = new Graph.Node<>("Ana");
+        var mark = new Graph.Node<>("Mark");
+        var carlos = new Graph.Node<>("Carlos");
+        var john = new Graph.Node<>("John");
+        var spencer = new Graph.Node<>("Spencer");
+        var logan = new Graph.Node<>("Logan");
+        var bruce = new Graph.Node<>("Bruce");
 
-        graph.addVertex(julia, List.of(ana, mark));
-        graph.addVertex(ana, List.of(julia, bruce));
-        graph.addVertex(bruce, List.of(spencer, john, carlos));
-        graph.addVertex(carlos, List.of(john, julia, mark, ana));
-        graph.addVertex(spencer, List.of(logan));
+        graph.addNode(julia, List.of(ana, mark));
+        graph.addNode(ana, List.of(julia, bruce));
+        graph.addNode(bruce, List.of(spencer, john, carlos));
+        graph.addNode(carlos, List.of(john, julia, mark, ana));
+        graph.addNode(spencer, List.of(logan));
 
-        this.breadthFirstSearch = new BreadthFirstSearch(graph);
+        this.breadthFirstSearch = new BreadthFirstSearch<>(graph);
     }
 
     @Test
     @DisplayName("Should find Logan from Ana")
     void shouldFindLoganFromAna() {
-        var ana = new Graph.Vertex("Ana");
-        var logan = new Graph.Vertex("Logan");
+        var ana = new Graph.Node<>("Ana");
+        var logan = new Graph.Node<>("Logan");
 
         assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isPresent());
     }
@@ -46,8 +46,8 @@ class BreadthFirstSearchTest {
     @Test
     @DisplayName("Should not find Rafael from Ana")
     void shouldNotFindRafaelFromAna() {
-        var ana = new Graph.Vertex("Ana");
-        var logan = new Graph.Vertex("Rafael");
+        var ana = new Graph.Node<>("Ana");
+        var logan = new Graph.Node<>("Rafael");
 
         assertTrue(this.breadthFirstSearch.search(ana, logan::equals).isEmpty());
     }
