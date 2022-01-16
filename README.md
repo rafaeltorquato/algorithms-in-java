@@ -29,9 +29,6 @@ A set of algorithms implemented in java language.
 * Complexity O(V + E), where V is the number of vertices and E is the number of edges in the graph.
 
 https://wikimedia.org/api/rest_v1/media/math/render/svg/a7cf317fbe3965ae3164f28c1f6858696adb23f4
-
 ### [Challenge Circular Track Gas Station](./src/main/java/br/com/torquato/algorithms/challenges/CircularTrackGasStations.java)
-
 ![Challenge Circular Track Gas Station](./src/main/resources/CircularTrackGasStations.jpeg)
-
 * Complexity O(n)
