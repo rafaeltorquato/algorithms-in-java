@@ -75,19 +75,18 @@ public class DijkstrasSearch<R, T extends GraphNode<R>> {
                 throw new IllegalArgumentException("Dijkstra algorithm can't compute negative values.");
             }
 
-            Double travelCost = neighborWeight + nodeWeight;
+            Double newTravelCost = neighborWeight + nodeWeight;
             Double neighborPreviousCost = this.travelCosts.get(neighbor);
-            if (neighborPreviousCost == null || neighborPreviousCost > travelCost) {
-                this.travelCosts.put(neighbor, travelCost);
+            // newTravelCost is cheaper than neighborPreviousCost
+            if (neighborPreviousCost == null || neighborPreviousCost > newTravelCost) {
+                this.travelCosts.put(neighbor, newTravelCost);
                 this.parents.put(neighbor, node);
             }
         }
         this.processed.add(node);
-        Map.Entry<T, Double> minEntry = getMinEntry();
-        T minNode = minEntry.getKey();
-        Double minNodeWeight = minEntry.getValue();
 
-        recursiveSearch(minNode, minNodeWeight);
+        Map.Entry<T, Double> minEntry = getMinEntry();
+        recursiveSearch(minEntry.getKey(), minEntry.getValue());
     }
 
     private Map.Entry<T, Double> getMinEntry() {
