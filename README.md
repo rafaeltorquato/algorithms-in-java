@@ -21,7 +21,7 @@ A set of algorithms implemented in java language.
 ### [Quick Sort](./src/main/java/br/com/torquato/algorithms/QuickSort.java)
 
 * Algorithm abstraction to sort an array of elements.
-* Complexity O(n log(n))
+* Complexity O(n log n)
 
 ### [Breadth First Search](./src/main/java/br/com/torquato/algorithms/BreadthFirstSearch.java)
 
